@@ -8,16 +8,34 @@ namespace KleninShiza
     {
         public static void Main(string[] args)
         {
+            List<Window> windows = new List<Window>();
+            void vivi(List<Window> win)
+            {
+                foreach (Window window in win)
+                {
+                    window.Draw();
+                }
+            }
+            Console.Title = "Console";
             bool bkl = true;
             int posX = 20;
             int posY = 10;
             Header official = new Header("RAZRAB", 0, 0, Console.WindowWidth-1, Console.WindowHeight-1, bkl);
             Header header = new Header("Zagalovok", posX, posY, 25, 15, bkl);
-            Window win1 = new Window(0, 0, Console.WindowWidth-1, Console.WindowHeight-1, official, "Okno0", bkl);
-            
-            Window win2 =new Window(posX,posY,40,15,header,"Okno1", bkl);
-            Window win3 =new Window( 30,5,45,15,header,"Okno2", bkl);
+            Window win1 = new Window(0, 0, Console.WindowWidth - 1, Console.WindowHeight - 1, official, "Okno0", true, ConsoleColor.Black);
+            Window win2 =new Window(posX,posY,40,15,header,"Okno1", bkl, ConsoleColor.Blue);
+            Window win3 =new Window( 30,5,45,15,header,"Okno2", false, ConsoleColor.Black);
+            windows.Add(win1);
+            windows.Add(win2);
+            windows.Add(win3);
+            vivi(windows);
 
+            
+            /*
+            win1.AddList(win1); 
+            win2.AddList(win2);
+            win3.AddList(win3);
+            */
             ConsoleKeyInfo keyInfo = new ConsoleKeyInfo();
             while (true)
             {
@@ -25,24 +43,33 @@ namespace KleninShiza
                 if (keyInfo.Key == ConsoleKey.RightArrow)
                 {
                     win2.Move(posX+1,posY);
+                    vivi(windows);
+                    posX++;
                 }
                 else if (keyInfo.Key == ConsoleKey.LeftArrow)
                 {
                     win2.Move(posX-1,posY);
+                    vivi(windows);
+                    posX--;
                 }
                 else if (keyInfo.Key == ConsoleKey.UpArrow)
                 {
                     win2.Move(posX,posY-1);
+                    vivi(windows);
+                    posY--;
                 }
                 else if (keyInfo.Key == ConsoleKey.DownArrow)
                 {
                     win2.Move(posX,posY+1);
+                    vivi(windows);
+                    posY++;
                 }
                 
             }
             
 
 
+            
 
 
 /*

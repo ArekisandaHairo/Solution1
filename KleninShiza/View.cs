@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace KleninShiza
 {
@@ -8,12 +9,13 @@ namespace KleninShiza
         protected Header _header;
         protected int _deep;
         protected bool _off;
+        protected List<View> _list;
         protected string _title;
         protected int _posX;
         protected int _posY;
         protected int _weiht;
         protected int _height;
-        
+
         public View(int posX, int posY, int weiht, int height)
         {
             _height = height;
@@ -21,24 +23,21 @@ namespace KleninShiza
             _posX = posX;
             _posY = posY;
         }
-        public View(int posX, int posY, int weiht, int height, string title)
+        public View(int posX, int posY, int weiht, int height, string title, bool off)
         {
             _height = height;
             _weiht = weiht;
             _posX = posX;
             _posY = posY;
             _title = title;
-        }
-
-        public View(bool off)
-        {
             _off = off;
         }
 
-        protected View()
+        protected View(List<View> list)
         {
-            throw new NotImplementedException();
+            _list = list;
         }
+
 
         public virtual void Move(int X, int Y)
         {

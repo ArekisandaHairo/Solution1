@@ -16,13 +16,9 @@ namespace KleninShiza
 
         public override void Move(int X, int Y)
         {
-            base.Move(X, Y);
+            _posX = X;
+            _posY = Y;
             
-        }
-
-        public bool Button()
-        {
-            return _off;
         }
         public void Draw() 
         {
