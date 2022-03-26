@@ -12,11 +12,9 @@ namespace KleninShiza
             
             Console.Title = "Console";
             bool bkl = true;
-            int posX = 20;
-            int posY = 10;
             Window win1 = new Window(0, 0, Console.WindowWidth - 10, Console.WindowHeight - 10, "Okno0", true, ConsoleColor.Black);
-            Window win2 =new Window(posX,posY,40,15,"Okno1", bkl, ConsoleColor.Black);
-            Window win3 =new Window( 30,5,45,15,"Okno2", true, ConsoleColor.Black);
+            Window win2 = new Window( 20, 10,40,15,"Okno1", bkl, ConsoleColor.Black);
+            Window win3 = new Window( 30,5,45,15,"Okno2", true, ConsoleColor.Black);
 
             windows.Add(win1);
             windows.Add(win2);
@@ -26,11 +24,6 @@ namespace KleninShiza
             work.Swap(work._activeWin, work._list.Count-1 );
             work.PrintWin();
             
-            /*
-            win1.AddList(win1); 
-            win2.AddList(win2);
-            win3.AddList(win3);
-            */
             ConsoleKeyInfo keyInfo = new ConsoleKeyInfo();
             while (keyInfo.Key != ConsoleKey.Escape)
             {
@@ -38,27 +31,23 @@ namespace KleninShiza
                 switch (keyInfo.Key)
                 {
                     case ConsoleKey.RightArrow:
-                        windows[work._activeWin].Move(posX+1,posY);
+                        windows[work._activeWin].Move(windows[work._activeWin]._posX+1,windows[work._activeWin]._posY);
                         work.PrintWin();
-                        posX++;
                         break;
                     case ConsoleKey.LeftArrow:
-                        windows[work._activeWin].Move(posX-1,posY);
+                        windows[work._activeWin].Move(windows[work._activeWin]._posX-1,windows[work._activeWin]._posY);
                         work.PrintWin();
-                        posX--;
                         break;
                     case ConsoleKey.UpArrow:
-                        windows[work._activeWin].Move(posX,posY-1);
+                        windows[work._activeWin].Move(windows[work._activeWin]._posX,windows[work._activeWin]._posY-1);
                         work.PrintWin();
-                        posY--;
                         break;
                     case ConsoleKey.DownArrow:
-                        windows[work._activeWin].Move(posX,posY+1);
+                        windows[work._activeWin].Move(windows[work._activeWin]._posX,windows[work._activeWin]._posY+1);
                         work.PrintWin();
-                        posY++;
                         break;
                 }
-
+                    // Alt + X и мы меняем окно
                 if (((keyInfo.Modifiers & ConsoleModifiers.Alt)!=0))
                 {
                     if (keyInfo.Key == ConsoleKey.X)
@@ -73,6 +62,7 @@ namespace KleninShiza
 
 
 /*
+ // Я пока не понимаю зачем это тут... но оно работает, точнее, работало.
             while (true)
             {
                 int index = 0;

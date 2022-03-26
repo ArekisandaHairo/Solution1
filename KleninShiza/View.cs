@@ -11,8 +11,8 @@ namespace KleninShiza
         protected bool _off;
         protected List<View> _list;
         protected string _title;
-        protected int _posX;
-        protected int _posY;
+        public int _posX;
+        public int _posY;
         protected int _weiht;
         protected int _height;
         
