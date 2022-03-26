@@ -39,8 +39,11 @@ namespace KleninShiza
         public void AddOkno()
         {
             _list.Add(new Window(10,10,20,20, "Okno", true, ConsoleColor.Black));
+            Swap(_list.Count-1 , _list.Count -2);
+            PrintWin();
         }
 
+        //
         
     
     }

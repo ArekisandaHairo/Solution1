@@ -56,6 +56,11 @@ namespace KleninShiza
                         work.Swap(work._activeWin, work._list.Count-1 );
                         work.PrintWin();
                     }
+
+                    if (keyInfo.Key == ConsoleKey.V)
+                    {
+                        work.AddOkno();
+                    }
                 }
             }
             
