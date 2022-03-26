@@ -18,13 +18,13 @@ namespace KleninShiza
             Window win2 =new Window(posX,posY,40,15,"Okno1", bkl, ConsoleColor.Black);
             Window win3 =new Window( 30,5,45,15,"Okno2", true, ConsoleColor.Black);
 
-            Work work = new Work(windows, 1);
-            
             windows.Add(win1);
             windows.Add(win2);
             windows.Add(win3);
-            vivi(windows);
-
+            
+            Work work = new Work(windows, 1);
+            work.Swap(work._activeWin, work._list.Count-1 );
+            work.PrintWin();
             
             /*
             win1.AddList(win1); 
@@ -39,36 +39,37 @@ namespace KleninShiza
                 {
                     case ConsoleKey.RightArrow:
                         windows[work._activeWin].Move(posX+1,posY);
-                        vivi(windows);
+                        work.PrintWin();
                         posX++;
                         break;
                     case ConsoleKey.LeftArrow:
                         windows[work._activeWin].Move(posX-1,posY);
-                        vivi(windows);
+                        work.PrintWin();
                         posX--;
                         break;
                     case ConsoleKey.UpArrow:
                         windows[work._activeWin].Move(posX,posY-1);
-                        vivi(windows);
+                        work.PrintWin();
                         posY--;
                         break;
                     case ConsoleKey.DownArrow:
                         windows[work._activeWin].Move(posX,posY+1);
-                        vivi(windows);
+                        work.PrintWin();
                         posY++;
                         break;
                 }
-            }
-            
 
-
-            void vivi(List<View> win)
-            {
-                foreach (Window window in win)
+                if (((keyInfo.Modifiers & ConsoleModifiers.Alt)!=0))
                 {
-                    window.Draw();
+                    if (keyInfo.Key == ConsoleKey.X)
+                    {
+                        work._activeWin--;
+                        work.Swap(work._activeWin, work._list.Count-1 );
+                        work.PrintWin();
+                    }
                 }
             }
+            
 
 
 /*

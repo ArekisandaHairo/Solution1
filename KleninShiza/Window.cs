@@ -5,7 +5,6 @@ namespace KleninShiza
 {
     public class Window : View
     {
-        public ConsoleColor _color;
         
         
         public Window(int posX, int posY, int weiht, int height, string title , bool off, ConsoleColor color) : base(posX, posY, weiht, height, title, off)

@@ -5,7 +5,7 @@ namespace KleninShiza
 {
     public class View
     {
-        
+        public ConsoleColor _color;
         protected Header _header;
         protected int _deep;
         protected bool _off;
@@ -15,6 +15,7 @@ namespace KleninShiza
         protected int _posY;
         protected int _weiht;
         protected int _height;
+        
 
         public View(int posX, int posY, int weiht, int height)
         {
