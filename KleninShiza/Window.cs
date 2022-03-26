@@ -5,14 +5,15 @@ namespace KleninShiza
 {
     public class Window : View
     {
-        private ConsoleColor _color;
+        public ConsoleColor _color;
         
         
-        public Window(int posX, int posY, int weiht, int height, Header header, string title , bool off, ConsoleColor color) : base(posX, posY, weiht, height, title, off)
+        public Window(int posX, int posY, int weiht, int height, string title , bool off, ConsoleColor color) : base(posX, posY, weiht, height, title, off)
         {
             _header = new Header(title, posX, posY, weiht, height, off);
             _color = color;
         }
+
         public void Draw()
         {
             if (_off == true)
@@ -39,6 +40,7 @@ namespace KleninShiza
             Drower.Drawervert(_posX, _posY , _height, "#");
             Drower.Drawervert(_posX + _weiht, _posY, _height, "#");
         }
+        
 
         /*
         public void AddList(Window x)

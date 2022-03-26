@@ -8,23 +8,18 @@ namespace KleninShiza
     {
         public static void Main(string[] args)
         {
-            List<Window> windows = new List<Window>();
-            void vivi(List<Window> win)
-            {
-                foreach (Window window in win)
-                {
-                    window.Draw();
-                }
-            }
+            List<View> windows = new List<View>();
+            
             Console.Title = "Console";
             bool bkl = true;
             int posX = 20;
             int posY = 10;
-            Header official = new Header("RAZRAB", 0, 0, Console.WindowWidth-1, Console.WindowHeight-1, bkl);
-            Header header = new Header("Zagalovok", posX, posY, 25, 15, bkl);
-            Window win1 = new Window(0, 0, Console.WindowWidth - 1, Console.WindowHeight - 1, official, "Okno0", true, ConsoleColor.Black);
-            Window win2 =new Window(posX,posY,40,15,header,"Okno1", bkl, ConsoleColor.Blue);
-            Window win3 =new Window( 30,5,45,15,header,"Okno2", false, ConsoleColor.Black);
+            Window win1 = new Window(0, 0, Console.WindowWidth - 10, Console.WindowHeight - 10, "Okno0", true, ConsoleColor.Black);
+            Window win2 =new Window(posX,posY,40,15,"Okno1", bkl, ConsoleColor.Black);
+            Window win3 =new Window( 30,5,45,15,"Okno2", true, ConsoleColor.Black);
+
+            Work work = new Work(windows, 1);
+            
             windows.Add(win1);
             windows.Add(win2);
             windows.Add(win3);
@@ -37,39 +32,43 @@ namespace KleninShiza
             win3.AddList(win3);
             */
             ConsoleKeyInfo keyInfo = new ConsoleKeyInfo();
-            while (true)
+            while (keyInfo.Key != ConsoleKey.Escape)
             {
                 keyInfo = Console.ReadKey(true);
-                if (keyInfo.Key == ConsoleKey.RightArrow)
+                switch (keyInfo.Key)
                 {
-                    win2.Move(posX+1,posY);
-                    vivi(windows);
-                    posX++;
+                    case ConsoleKey.RightArrow:
+                        windows[work._activeWin].Move(posX+1,posY);
+                        vivi(windows);
+                        posX++;
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        windows[work._activeWin].Move(posX-1,posY);
+                        vivi(windows);
+                        posX--;
+                        break;
+                    case ConsoleKey.UpArrow:
+                        windows[work._activeWin].Move(posX,posY-1);
+                        vivi(windows);
+                        posY--;
+                        break;
+                    case ConsoleKey.DownArrow:
+                        windows[work._activeWin].Move(posX,posY+1);
+                        vivi(windows);
+                        posY++;
+                        break;
                 }
-                else if (keyInfo.Key == ConsoleKey.LeftArrow)
-                {
-                    win2.Move(posX-1,posY);
-                    vivi(windows);
-                    posX--;
-                }
-                else if (keyInfo.Key == ConsoleKey.UpArrow)
-                {
-                    win2.Move(posX,posY-1);
-                    vivi(windows);
-                    posY--;
-                }
-                else if (keyInfo.Key == ConsoleKey.DownArrow)
-                {
-                    win2.Move(posX,posY+1);
-                    vivi(windows);
-                    posY++;
-                }
-                
             }
             
 
 
-            
+            void vivi(List<View> win)
+            {
+                foreach (Window window in win)
+                {
+                    window.Draw();
+                }
+            }
 
 
 /*
@@ -176,7 +175,6 @@ namespace KleninShiza
                 Console.Write("$user>>");
             }
             */
-            Console.ReadKey();
         }
     }
 }
