@@ -1,0 +1,7 @@
+C:\Users\Admin\RiderProjects\Solution1\KleninShiza\bin\Debug\KleninShiza.exe
+C:\Users\Admin\RiderProjects\Solution1\KleninShiza\bin\Debug\KleninShiza.pdb
+C:\Users\Admin\RiderProjects\Solution1\KleninShiza\obj\Debug\KleninShiza.csproj.AssemblyReference.cache
+C:\Users\Admin\RiderProjects\Solution1\KleninShiza\obj\Debug\KleninShiza.csproj.SuggestedBindingRedirects.cache
+C:\Users\Admin\RiderProjects\Solution1\KleninShiza\obj\Debug\KleninShiza.csproj.CoreCompileInputs.cache
+C:\Users\Admin\RiderProjects\Solution1\KleninShiza\obj\Debug\KleninShiza.exe
+C:\Users\Admin\RiderProjects\Solution1\KleninShiza\obj\Debug\KleninShiza.pdb
