@@ -18,6 +18,8 @@ namespace KleninShiza
                 Console.BackgroundColor = _color;
                 DrawBord();
                 Drower.cler(_posX,_posY,_weiht,_height);
+                TextInput s = new TextInput(_posX, _posY, _weiht, _height, "TextInputting...");
+                s.TextInputting();
                 _header.Draw();
                 Console.ResetColor();
             }

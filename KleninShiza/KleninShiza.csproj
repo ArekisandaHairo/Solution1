@@ -41,6 +41,7 @@
     <ItemGroup>
         <Compile Include="Drower.cs" />
         <Compile Include="Header.cs" />
+        <Compile Include="TextInput.cs" />
         <Compile Include="View.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

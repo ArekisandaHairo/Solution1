@@ -6,7 +6,6 @@ namespace KleninShiza
     {
         public static void cler(int posX, int posY, int weiht, int height)
         {
-            
             for (int i = 1; i < height; i++)
             {
                 Console.SetCursorPosition(posX+1,posY + i);
@@ -14,7 +13,7 @@ namespace KleninShiza
                 {
                     Console.Write(" ");
                 }
-                
+              
             }
         }
         public static void Drawerhor(int posX, int posY, int len, string c)

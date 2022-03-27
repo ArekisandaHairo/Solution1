@@ -10,9 +10,8 @@ namespace KleninShiza
             List<View> windows = new List<View>();
             
             Console.Title = "Hairo";
-            bool bkl = true;
             Window win1 = new Window(0, 0, Console.WindowWidth - 10, Console.WindowHeight - 10, "Okno0", true, ConsoleColor.Black);
-            Window win2 = new Window( 20, 10,40,15,"Okno1", bkl, ConsoleColor.Black);
+            Window win2 = new Window( 20, 10,40,15,"Okno1", true, ConsoleColor.Black);
             Window win3 = new Window( 30,5,45,15,"Okno2", true, ConsoleColor.Black);
 
             windows.Add(win1);
@@ -53,6 +52,7 @@ namespace KleninShiza
                     {
                         work._activeWin--;
                         work.Swap(work._activeWin, work._list.Count-1 );
+                        //work.Next(); // Допилить
                         work.PrintWin();
                     }
                     if (keyInfo.Key == ConsoleKey.V)

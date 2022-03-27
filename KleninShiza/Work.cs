@@ -27,7 +27,26 @@ namespace KleninShiza
             _activeWin = j;
             _list[j]._color = ConsoleColor.DarkBlue;
             _list[i]._color = ConsoleColor.Black;
+        }
 
+        public void Next()
+        {
+            if (_activeWin < _list.Count-1)
+            {
+                //_activeWin++;
+                var num1 = _list[_activeWin];
+                var num2 = _list[_activeWin +1];
+                _list[_activeWin] = num2;
+                _list[_activeWin + 1] = num1;
+            }
+            else if ( _activeWin == _list.Count-1)
+            {
+                //_activeWin = 0;
+                var num1 = _list[_list.Count-1];
+                var num2 = _list[_activeWin];
+                _list[_list.Count-1] = num2;
+                _list[_activeWin] = num1;
+            }
         }
         public void PrintWin()
         {
@@ -39,7 +58,6 @@ namespace KleninShiza
         public void AddOkno()
         {
             _list.Add(new Window(10,10,20,20, "Okno", true, ConsoleColor.Black));
-            Swap(_list.Count-1 , _list.Count -2);
             PrintWin();
         }
     }
