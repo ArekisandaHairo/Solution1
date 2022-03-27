@@ -35,6 +35,5 @@ namespace KleninShiza
                 Console.SetCursorPosition(posX,i + posY);
             }
         }
-        
     }
 }

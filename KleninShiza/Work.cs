@@ -42,9 +42,5 @@ namespace KleninShiza
             Swap(_list.Count-1 , _list.Count -2);
             PrintWin();
         }
-
-        //
-        
-    
     }
 }

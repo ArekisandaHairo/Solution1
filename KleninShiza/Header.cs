@@ -12,7 +12,6 @@ namespace KleninShiza
             _title = title;
             _off = off;
         }
-
         public override void Move(int X, int Y)
         {
             _posX = X;

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace KleninShiza
 {
@@ -10,7 +9,7 @@ namespace KleninShiza
         {
             List<View> windows = new List<View>();
             
-            Console.Title = "Console";
+            Console.Title = "Hairo";
             bool bkl = true;
             Window win1 = new Window(0, 0, Console.WindowWidth - 10, Console.WindowHeight - 10, "Okno0", true, ConsoleColor.Black);
             Window win2 = new Window( 20, 10,40,15,"Okno1", bkl, ConsoleColor.Black);
@@ -46,8 +45,8 @@ namespace KleninShiza
                         windows[work._activeWin].Move(windows[work._activeWin]._posX,windows[work._activeWin]._posY+1);
                         work.PrintWin();
                         break;
-                }
-                    // Alt + X и мы меняем окно
+                } 
+                // Alt + X и мы меняем окно
                 if (((keyInfo.Modifiers & ConsoleModifiers.Alt)!=0))
                 {
                     if (keyInfo.Key == ConsoleKey.X)
@@ -56,7 +55,6 @@ namespace KleninShiza
                         work.Swap(work._activeWin, work._list.Count-1 );
                         work.PrintWin();
                     }
-
                     if (keyInfo.Key == ConsoleKey.V)
                     {
                         work.AddOkno();

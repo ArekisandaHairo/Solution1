@@ -15,8 +15,6 @@ namespace KleninShiza
         public int _posY;
         protected int _weiht;
         protected int _height;
-        
-
         public View(int posX, int posY, int weiht, int height)
         {
             _height = height;
@@ -33,19 +31,15 @@ namespace KleninShiza
             _title = title;
             _off = off;
         }
-
         protected View(List<View> list)
         {
             _list = list;
         }
-
-
         public virtual void Move(int X, int Y)
         {
             _posX = X;
             _posY = Y;  
             
         }
-       
     }
 }
