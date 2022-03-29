@@ -46,7 +46,7 @@ namespace KleninShiza
                         break;
                 } 
                 // Alt + X и мы меняем окно
-                if (((keyInfo.Modifiers & ConsoleModifiers.Alt)!=0))
+                if ((keyInfo.Modifiers & ConsoleModifiers.Alt)!=0)
                 {
                     if (keyInfo.Key == ConsoleKey.X)
                     {
