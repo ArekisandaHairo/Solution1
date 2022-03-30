@@ -8,7 +8,7 @@ namespace KleninShiza
         public static void Main(string[] args)
         {
             List<View> windows = new List<View>();
-            
+
             Console.Title = "Hairo";
             Window win1 = new Window(0, 0, Console.WindowWidth - 10, Console.WindowHeight - 10, "Okno0", true, ConsoleColor.Black);
             Window win2 = new Window( 20, 10,40,15,"Okno1", true, ConsoleColor.Black);
@@ -52,7 +52,6 @@ namespace KleninShiza
                     {
                         work._activeWin--;
                         work.Swap(work._activeWin, work._list.Count-1 );
-                        //work.Next(); // Допилить
                         work.PrintWin();
                     }
                     if (keyInfo.Key == ConsoleKey.V)
@@ -65,7 +64,7 @@ namespace KleninShiza
 
 
 /*
- // Я пока не понимаю зачем это тут... но оно работает, точнее, работало.
+ // ло.
             while (true)
             {
                 int index = 0;
@@ -73,7 +72,7 @@ namespace KleninShiza
                 if (s.Key == ConsoleKey.Q)
                 {
                     
-                }
+                }Я пока не понимаю зачем это тут... но оно работает, точнее, работа
 
                 if (s.Key == ConsoleKey.Q)
                 {

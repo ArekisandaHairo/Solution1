@@ -25,7 +25,7 @@ namespace KleninShiza
                 Console.Write(_text);
             }
         }
-        public static void Insert_LF_n(int x , int y, string s, int width, int height)
+        private static void Insert_LF_n(int x , int y, string s, int width, int height)
         {
             int index = 0;
             for (int i = 0; i < height; i++)

@@ -29,29 +29,12 @@ namespace KleninShiza
             _list[i]._color = ConsoleColor.Black;
         }
 
-        public void Next()
-        {
-            if (_activeWin < _list.Count-1)
-            {
-                //_activeWin++;
-                var num1 = _list[_activeWin];
-                var num2 = _list[_activeWin +1];
-                _list[_activeWin] = num2;
-                _list[_activeWin + 1] = num1;
-            }
-            else if ( _activeWin == _list.Count-1)
-            {
-                //_activeWin = 0;
-                var num1 = _list[_list.Count-1];
-                var num2 = _list[_activeWin];
-                _list[_list.Count-1] = num2;
-                _list[_activeWin] = num1;
-            }
-        }
+        
         public void PrintWin()
         {
-            foreach (Window list in _list)
+            foreach (var view in _list)
             {
+                var list = (Window) view;
                 list.Draw();
             }
         }
