@@ -8,16 +8,16 @@ namespace KleninShiza
         public static void Main(string[] args)
         {
             List<View> windows = new List<View>();
-
+            //По итогу должно остаться только эти 4 строчки, то есть от сель
             Console.Title = "Hairo";
             Window win1 = new Window(0, 0, 10,  10, "Okno0", true);
             Window win2 = new Window( 20, 10,40,15,"Okno1", true);
             Window win3 = new Window( 30,5,45,15,"Okno2", true);
+            // до сель
             windows.Add(win1);
             windows.Add(win2);
             windows.Add(win3);
             Work work = new Work(windows, 0);
-            //work.Swap(work._activeWin, work._list.Count-1 );
             work.PrintWin();
             int count = work._list.Count;
             int tab_count=0;
@@ -25,6 +25,7 @@ namespace KleninShiza
             while (keyInfo.Key != ConsoleKey.Escape)
             {
                 keyInfo = Console.ReadKey(true);
+                // Стандартное перемещение окна
                 switch (keyInfo.Key)
                 {
                     case ConsoleKey.RightArrow:
@@ -44,23 +45,19 @@ namespace KleninShiza
                         work.PrintWin();
                         break;
                 } 
-                // Alt + X и мы меняем окно
+                
                 if ((keyInfo.Modifiers & ConsoleModifiers.Alt)!=0)
                 {
                     switch (keyInfo.Key)
                     {
-                        case ConsoleKey.X:
-                            work._activeWin--;
-                            work.Swap(work._activeWin, work._list.Count-1 );
-                            work.PrintWin();
-                            break;
+                        // Добавить новое окно
                         case ConsoleKey.V:
                             count++;
                             work.AddOkno(count);
                             break;
                     }
                 }
-
+                // Нажатие на "Tab" меняет фокус активного окна 
                 if (keyInfo.Key == ConsoleKey.Tab)
                 {
                     if (tab_count < work._list.Count-1)
@@ -79,7 +76,12 @@ namespace KleninShiza
                 }
             } 
             /*
-            * Я НЕ ПОНИМАЮ КАКА СДЕЛАТЬ ALT + TAB, ОНО ЖЕ НЕ ЗАЖИМАЕТСЯ!!!!
+             * Реализовать нажатие кнопки
+             * Сделать увеличение окна до полного экрана
+             * Сделать скрытие окна ( отрисовка только хэдера )
+             * Отруб окна полностью
+             * Работа с шириной и высотой окна
+             * 
             */
         }
     }

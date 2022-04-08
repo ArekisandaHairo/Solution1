@@ -14,7 +14,7 @@ namespace KleninShiza
         {
             Console.SetCursorPosition(_posX+1,_posY+1);
             Console.Write(_title);
-            Console.SetCursorPosition(_posX+_weiht-9,_posY+1);
+            Console.SetCursorPosition(_posX+_weiht-8,_posY);
             Console.Write(Constants.Svert + Constants.Razvert + Constants.Close );
             Drawerhor(_posX,_posY+2,_weiht,"#");
         }
