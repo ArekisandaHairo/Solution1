@@ -13,10 +13,6 @@ namespace KleninShiza
             _list = list;
             _activeWin = activeWin;
         }
-        public Work(List<View> list)
-        {
-            _list = list;
-        }
 
         public void Swap(int i, int j)
         {
@@ -25,8 +21,6 @@ namespace KleninShiza
             _list[i] = num2;
             _list[j] = num1;
             _activeWin = j;
-            _list[j]._color = ConsoleColor.DarkBlue;
-            _list[i]._color = ConsoleColor.Black;
         }
 
         
@@ -34,13 +28,20 @@ namespace KleninShiza
         {
             foreach (var view in _list)
             {
-                var list = (Window) view;
-                list.Draw();
+                if (view != _list[_activeWin])
+                {
+                    var list = (Window) view;
+                    list.Draw();
+                }
             }
+            Console.ForegroundColor = ConsoleColor.Green;
+            var list1 = (Window) _list[_activeWin];
+            list1.Draw();
+            Console.ForegroundColor = ConsoleColor.Blue;
         }
-        public void AddOkno()
+        public void AddOkno(int count)
         {
-            _list.Add(new Window(10,10,20,20, "Okno", true, ConsoleColor.Black));
+            _list.Add(new Window(17,0,20,10, $"Okno{count}", true));
             PrintWin();
         }
     }

@@ -39,8 +39,12 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="bufer.cs" />
+        <Compile Include="Constants.cs" />
+        <Compile Include="Counteiner.cs" />
         <Compile Include="Drower.cs" />
         <Compile Include="Header.cs" />
+        <Compile Include="Text.cs" />
         <Compile Include="TextInput.cs" />
         <Compile Include="View.cs" />
         <Compile Include="Program.cs" />

@@ -3,26 +3,19 @@ using static KleninShiza.Drower;
 
 namespace KleninShiza
 {
-    public class Header : View
+    public class Header : Counteiner
     {
-        private new string _title;
-        private new bool _off ;
-        public Header(string title,int posX, int posY , int weiht, int height, bool off) : base(posX, posY, weiht, height)
+        private string _title;
+        public Header(string title,int posX, int posY , int weiht, int height) : base(posX, posY, weiht, height)
         {
             _title = title;
-            _off = off;
-        }
-        public override void Move(int X, int Y)
-        {
-            _posX = X;
-            _posY = Y;
-            
         }
         public void Draw() 
         {
             Console.SetCursorPosition(_posX+1,_posY+1);
             Console.Write(_title);
-            
+            Console.SetCursorPosition(_posX+_weiht-9,_posY+1);
+            Console.Write(Constants.Svert + Constants.Razvert + Constants.Close );
             Drawerhor(_posX,_posY+2,_weiht,"#");
         }
     }

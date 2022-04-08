@@ -3,42 +3,42 @@ using System.Collections.Generic;
 
 namespace KleninShiza
 {
-    public class Window : View
+    public class Window : Counteiner
     {
-        public Window(int posX, int posY, int weiht, int height, string title , bool off, ConsoleColor color) : base(posX, posY, weiht, height, title, off)
+        private bool _off;
+        private Header _header;
+        public Window(int posX, int posY, int weiht, int height, string title , bool off) : base(posX, posY, weiht, height)
         {
-            _header = new Header(title, posX, posY, weiht, height, off);
-            _color = color;
+            _header = new Header(title, posX, posY, weiht, height);
+            _off = off;
         }
 
         public void Draw()
         {
             if (_off == true)
             {
-                Console.BackgroundColor = _color;
-                DrawBord();
+                Drower.DrawBord(_posX, _posY,_weiht,_height);
                 Drower.cler(_posX,_posY,_weiht,_height);
-                TextInput s = new TextInput(_posX, _posY, _weiht, _height, "TextInputting...TextInputting...TextInputting...TextInputting...TextInputting...TextInputting...TextInputting...TextInputting...TextInputting...TextInputting...TextInputting...TextInputting...");
+                Text s = new Text(_posX, _posY, _weiht, _height, "TextInputting...");
                 s.TextInputting();
                 _header.Draw();
-                Console.ResetColor();
             }
         } 
         public override void Move(int x, int y)
         {
-            Drower.cler(_posX-1,_posY-1,_weiht+2,_height+2);
-            _posX = x;
-            _posY = y;
-            _header.Move(x,y);
-            Draw();
+            if (x >= 0 && y >= 0 && x+_weiht < Console.WindowWidth && y+_height < Console.WindowHeight)
+            {
+                Drower.cler(_posX-1,_posY-1,_weiht+2,_height+2);
+                _posX = x;
+                _posY = y;
+                _header.Move(x,y);
+                Draw();
+            }
+            
         }
-        private void DrawBord()
-        {
-            Drower.Drawerhor(_posX, _posY, _weiht, "#");
-            Drower.Drawerhor(_posX, _posY + _height, _weiht, "#");
-            Drower.Drawervert(_posX, _posY , _height, "#");
-            Drower.Drawervert(_posX + _weiht, _posY, _height, "#");
-        }
+        
+
+        
         
     }
 }

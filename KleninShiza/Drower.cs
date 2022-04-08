@@ -1,9 +1,11 @@
 using System;
+using System.Security.Policy;
 
 namespace KleninShiza
 {
      static class Drower
     {
+        
         public static void cler(int posX, int posY, int weiht, int height)
         {
             for (int i = 1; i < height; i++)
@@ -15,6 +17,13 @@ namespace KleninShiza
                 }
               
             }
+        }
+        public static  void DrawBord( int x, int y, int w , int h)
+        {
+            Drawerhor(x, y, w, "#");
+            Drawerhor(x, y + h, w, "#");
+            Drawervert(x, y , h, "#");
+            Drawervert(x + w, y, h, "#");
         }
         public static void Drawerhor(int posX, int posY, int len, string c)
         {
