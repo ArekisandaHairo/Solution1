@@ -1,7 +1,7 @@
 /*using System;
 using System.IO;
 
-namespace KleninShiza
+namespace WindowSoul
 {
     public static class bufer
     {
