@@ -14,19 +14,16 @@ namespace WindowSoul
         {
             if (_text == "")
             {
-                Console.SetCursorPosition(PosX+1, PosY+3);
+                SetPos(0,0);
                 _text = Console.ReadLine();
             }
         }
         public void TextI()
         {
-            if (_text.Length >= Weiht)
-            {
-                Insert_LF_n(PosX, PosY, _text, Weiht - 1, Height);
-            }
+            if (_text.Length >= Weiht) Insert_LF_n(PosX, PosY, _text, Weiht - 1, Height);
             else
             {
-                Console.SetCursorPosition(PosX + 1, PosY + 3);
+                // Console.SetCursorPosition(PosX + 2, PosY + 3);
                 Console.Write(_text);
             }
         }
@@ -37,7 +34,7 @@ namespace WindowSoul
             int index = 0;
             for (int i = y; i < y + height; i++)
             {
-                Console.SetCursorPosition(x + 1, 3 + i);
+                // Console.SetCursorPosition(x + 1, 3 + i);
                 for (int j = x; j < x + width; j++)
                 {
                     if (index < s.Length)

@@ -69,7 +69,7 @@ namespace WindowSoul
                 
                 switch (keyInfo.Key)
                 {
-                    // Стандартное перемещение окна
+                    // Перемещение окна
                     case ConsoleKey.RightArrow:
                         _list[_activeWin].Move(_list[_activeWin].PosX + 1, _list[_activeWin].PosY);
                         PrintWin();

@@ -1,4 +1,6 @@
 
+using System;
+
 namespace WindowSoul
 {
     public class View
@@ -30,6 +32,10 @@ namespace WindowSoul
         }
         public virtual void DrawText()
         {
+        }
+        public void SetPos(int x, int y)
+        {
+            Console.SetCursorPosition(PosX+1+x,PosY+3+y);
         }
     }
 }

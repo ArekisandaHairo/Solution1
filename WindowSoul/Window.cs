@@ -22,16 +22,15 @@ namespace WindowSoul
             {
                 Drower.DrawBord(PosX, PosY, Weiht, Height);
                 Drower.Cler(PosX, PosY, Weiht, Height);
+                SetPos(0,0);
                 _txt.TextI();
                 _header.Draw();
             }
         }
-
         public override void DrawText()
         {
             _txt.TextInput();
         }
-
         public override void Move(int x, int y)
         {
             if (x >= 0 && y >= 0 && x + Weiht < Console.WindowWidth && y + Height < Console.WindowHeight)
@@ -41,7 +40,6 @@ namespace WindowSoul
                 _header.Move(x, y);
             }
         }
-
         public override void Change(int x, int y)
         {
             if (x >= 10 && y >= 10 && x < Console.WindowWidth && y < Console.WindowHeight)
@@ -51,7 +49,6 @@ namespace WindowSoul
                 _header.Change(x, y);
             }
         }
-
         public override void Collapse(ref bool c)
         {
             if (c)
@@ -65,5 +62,7 @@ namespace WindowSoul
                 c = true;
             }
         }
+
+        
     }
 }

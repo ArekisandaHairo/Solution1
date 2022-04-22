@@ -1,0 +1,7 @@
+C:\Users\Admin\RiderProjects\Solution1\WindowSoul\bin\Debug\WindowSoul.exe
+C:\Users\Admin\RiderProjects\Solution1\WindowSoul\bin\Debug\WindowSoul.pdb
+C:\Users\Admin\RiderProjects\Solution1\WindowSoul\obj\Debug\WindowSoul.csproj.AssemblyReference.cache
+C:\Users\Admin\RiderProjects\Solution1\WindowSoul\obj\Debug\WindowSoul.csproj.SuggestedBindingRedirects.cache
+C:\Users\Admin\RiderProjects\Solution1\WindowSoul\obj\Debug\WindowSoul.csproj.CoreCompileInputs.cache
+C:\Users\Admin\RiderProjects\Solution1\WindowSoul\obj\Debug\WindowSoul.exe
+C:\Users\Admin\RiderProjects\Solution1\WindowSoul\obj\Debug\WindowSoul.pdb
