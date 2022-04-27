@@ -5,13 +5,14 @@ namespace WindowSoul
     public class Window : Counteiner
     {
         private bool _off;
-        private readonly Header _header;
-        private readonly Text _txt;
+        // internal Text Txt;
+        internal readonly Header _header;
 
         public Window(int posX, int posY, int weiht, int height, string title, bool off) : base(posX, posY, weiht,
             height)
         {
-            _txt = new Text(posX, posY, weiht, height, "");
+            Txt = new Text(posX, posY, weiht, height, text);
+            Inputing = new Text_Input(posX, posY, weiht, height);
             _header = new Header(title, posX, posY, weiht, height);
             _off = off;
         }
@@ -23,13 +24,15 @@ namespace WindowSoul
                 Drower.DrawBord(PosX, PosY, Weiht, Height);
                 Drower.Cler(PosX, PosY, Weiht, Height);
                 SetPos(0,0);
-                _txt.TextI();
+                Txt.TextI(PosX,PosY,Weiht,Height);
                 _header.Draw();
             }
         }
-        public override void DrawText()
+
+        public override void Inp()
         {
-            _txt.TextInput();
+            SetPos(0,0);
+            Txt.text = Inputing.Input();
         }
         public override void Move(int x, int y)
         {

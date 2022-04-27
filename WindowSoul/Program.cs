@@ -7,19 +7,27 @@ namespace WindowSoul
     {
         public static void Main(string[] args)
         {
+            // Авторизация
             List<View> windows = new List<View>();
+
+            // AvtoReg avtoReg = new AvtoReg(0, 0, Console.WindowWidth - 1, Console.WindowHeight - 1);
+            // avtoReg.draw();
+            // avtoReg.Rabota();
+            // Console.ReadKey();
+
             Console.Title = "Hairo";
-            windows.Add(new Window(0, 0, 10, 10, "Okno0", true));
-            windows.Add(new Window(20, 10, 40, 15, "Okno1", true));
+            // windows.Add(new Window(0, 0, 10, 10, "Okno0", true));
+            // windows.Add(new Window(20, 10, 40, 15, "Okno1", true));
             windows.Add(new Window(30, 5, 45, 15, "Okno2", true));
             Work work = new Work(windows, 0);
             work.PrintWin();
             work.Window_Comands();
+            work.Exit();
 
-
+            
             /*
              *  Почему-то когда задаю позицию для текста, он работает не корректно,
-             * и на каждой итерации остаётся на одной позиции
+             * и на каждой итерации остаётся на одной позиции (пошло всё нах#й оно работает)
              * 
              *  Список Вьюшек в контейнере( для отрисовок )
              *  Реализовать нажатие кнопки

@@ -30,8 +30,9 @@ namespace WindowSoul
         public virtual void Collapse(ref bool c)
         {
         }
-        public virtual void DrawText()
+        public virtual void Inp()
         {
+            
         }
         public void SetPos(int x, int y)
         {

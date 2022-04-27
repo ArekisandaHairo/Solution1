@@ -12,6 +12,7 @@ namespace WindowSoul
         {
             _list = list;
             _activeWin = activeWin;
+            
         }
 
         public void PrintWin()
@@ -43,6 +44,24 @@ namespace WindowSoul
             _list[_activeWin] = new Window(0, 0, Console.WindowWidth - 1, Console.WindowHeight - 1, s, true);
         }
 
+        public void Exit()
+        {
+            string s = "Как я устал пилить эту херню.";
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            for (int i = 0; i < Console.WindowHeight; i++)
+            {
+                for (int j = 0; j < Console.WindowWidth; j+=2)
+                {
+                    Console.Write("Aa");
+                }
+            }
+            Console.SetCursorPosition(Console.WindowWidth / 2 - s.Length / 2, Console.WindowHeight / 2);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(s);
+            System.Threading.Thread.Sleep(5000);
+            Environment.Exit(0);
+        }
         public void Window_Comands()
         {
             int count = _list.Count;
@@ -128,7 +147,7 @@ namespace WindowSoul
                         break;
                     
                     case ConsoleKey.E: // Ввод текса в окно
-                        _list[_activeWin].DrawText();
+                        _list[_activeWin].Inp();
                         PrintWin();
                         break;
                     case ConsoleKey.Tab: // Нажатие на "Tab" меняет фокус активного окна 
