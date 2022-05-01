@@ -2,15 +2,16 @@ using System;
 
 namespace WindowSoul
 {
-    public class Text : Counteiner
+    public class Text : View
     {
+        internal string text;
         public Text(int posX, int posY, int weiht, int height, string text) : base(posX, posY, weiht, height)
         {
             this.text = text;
         }
 
 
-        public void TextI(int x, int y, int w, int h)
+        internal override void TextI(int x, int y, int w, int h)
         {
             if (text != null)
             {
@@ -18,13 +19,17 @@ namespace WindowSoul
             }
         }
 
+        internal override ref string str()
+        {
+            return ref text;
+        }
 
         private void Insert_LF_n(int x, int y, string s, int width, int height)
         {
             int index = 0;
             for (int i = y; i < y + height; i++)
             {
-                Console.SetCursorPosition(x+1,y+3);
+                Console.SetCursorPosition(x+1,i+3);
                 for (int j = x; j < x + width; j++)
                 {
                     if (index < s.Length) Console.Write(s[index++]);

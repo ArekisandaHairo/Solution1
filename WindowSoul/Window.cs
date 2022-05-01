@@ -2,21 +2,41 @@ using System;
 
 namespace WindowSoul
 {
-    public class Window : Counteiner
+    public class Window : Conteiner
     {
         private bool _off;
-        // internal Text Txt;
         internal readonly Header _header;
 
         public Window(int posX, int posY, int weiht, int height, string title, bool off) : base(posX, posY, weiht,
             height)
         {
-            Txt = new Text(posX, posY, weiht, height, text);
-            Inputing = new Text_Input(posX, posY, weiht, height);
+            _listelems.Add(new Text(posX, posY, weiht, height, ""));
+            _listelems.Add(new Text_Input(posX, posY, weiht, height));
             _header = new Header(title, posX, posY, weiht, height);
             _off = off;
         }
 
+        public void AddSomething(string c)
+        {
+            /*
+             * Button - "btn"
+             * Password - "pas"
+             * mail - "@"
+             * phone - "tel"
+             */
+            switch (c)
+            {
+                case "btn":
+                    break;
+                case "pas":
+                    break;
+                case "@":
+                    break;
+                case "tel":
+                    break;
+            }
+            
+        }
         public void Draw()
         {
             if (_off)
@@ -24,17 +44,19 @@ namespace WindowSoul
                 Drower.DrawBord(PosX, PosY, Weiht, Height);
                 Drower.Cler(PosX, PosY, Weiht, Height);
                 SetPos(0,0);
-                Txt.TextI(PosX,PosY,Weiht,Height);
+                Active(typeof(Text));
+                _listelems[Active(typeof(Text))].TextI(PosX,PosY,Weiht,Height);
                 _header.Draw();
             }
         }
 
-        public override void Inp()
+        internal override void Inp()
         {
             SetPos(0,0);
-            Txt.text = Inputing.Input();
+            _listelems[Active(typeof(Text))].str() = _listelems[Active(typeof(Text_Input))].Input();
         }
-        public override void Move(int x, int y)
+
+        internal override void Move(int x, int y)
         {
             if (x >= 0 && y >= 0 && x + Weiht < Console.WindowWidth && y + Height < Console.WindowHeight)
             {
@@ -43,7 +65,8 @@ namespace WindowSoul
                 _header.Move(x, y);
             }
         }
-        public override void Change(int x, int y)
+
+        internal override void Change(int x, int y)
         {
             if (x >= 10 && y >= 10 && x < Console.WindowWidth && y < Console.WindowHeight)
             {
@@ -52,7 +75,8 @@ namespace WindowSoul
                 _header.Change(x, y);
             }
         }
-        public override void Collapse(ref bool c)
+
+        internal override void Collapse(ref bool c)
         {
             if (c)
             {

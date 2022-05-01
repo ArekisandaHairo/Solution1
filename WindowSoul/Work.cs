@@ -6,7 +6,7 @@ namespace WindowSoul
     public class Work
     {
         private List<View> _list;
-        private int _activeWin;
+        public int _activeWin;
 
         public Work(List<View> list, int activeWin)
         {
@@ -48,8 +48,19 @@ namespace WindowSoul
         {
             string s = "Как я устал пилить эту херню.";
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            for (int i = 0; i < Console.WindowHeight; i++)
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.BackgroundColor = ConsoleColor.Blue;
+            for (int i = 0; i < Console.WindowHeight/2; i++)
+            {
+                for (int j = 0; j < Console.WindowWidth; j+=2)
+                {
+                    Console.Write("Aa");
+                }
+            }
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.BackgroundColor = ConsoleColor.Yellow;
+
+            for (int i = Console.WindowHeight/2; i < Console.WindowHeight; i++)
             {
                 for (int j = 0; j < Console.WindowWidth; j+=2)
                 {
@@ -57,7 +68,7 @@ namespace WindowSoul
                 }
             }
             Console.SetCursorPosition(Console.WindowWidth / 2 - s.Length / 2, Console.WindowHeight / 2);
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(s);
             System.Threading.Thread.Sleep(5000);
             Environment.Exit(0);

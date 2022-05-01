@@ -3,7 +3,7 @@ using static WindowSoul.Drower;
 
 namespace WindowSoul
 {
-    public class Header : Counteiner
+    public class Header : Conteiner
     {
         private string _title;
 

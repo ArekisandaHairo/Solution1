@@ -42,7 +42,7 @@
         <Compile Include="AvtoReg.cs" />
         <Compile Include="bufer.cs" />
         <Compile Include="Constants.cs" />
-        <Compile Include="Counteiner.cs" />
+        <Compile Include="Conteiner.cs" />
         <Compile Include="Drower.cs" />
         <Compile Include="Header.cs" />
         <Compile Include="Text.cs" />
