@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using static System.Console;
 
 namespace WindowSoul
 {
@@ -19,18 +21,22 @@ namespace WindowSoul
         {
             _window.Draw();
             SetPos(30,4);
-            Console.Write("Вход");
-            // while (true)
-            // {
+            Write("Вход");
+            while (ReadKey().KeyChar != 27)
+            {
+                Text_Input textInput1 = new Text_Input(_window.PosX,_window.PosY,_window.Weiht,_window.Height);
                 
-            // }
+                SetPos(10,10);
+                textInput1.Password();
+            }
         }
 
         private void Registration()
         {
             _window.Draw();
             SetPos(30,4);
-            Console.Write("Регистрация");
+            Write("Регистрация");
+            
             // while (true)
             // {
                 
@@ -39,44 +45,47 @@ namespace WindowSoul
 
         public void Rabota()
         {
+            CursorVisible = false;
+            List<ButtonsWin> btns = new List<ButtonsWin>();
+            btns.Add(new ButtonsWin(_window.PosX,_window.PosY,_window.Weiht,_window.Height, "Войти"));
+            btns.Add(new ButtonsWin(_window.PosX,_window.PosY,_window.Weiht,_window.Height, "Зарегистрироваться"));
             SetPos(30,4);
-            Console.Write("Приветствую, пожалуйста войдите в систему или зарегестрируйтесь.");
+            Write("Приветствую, пожалуйста войдите в систему или зарегестрируйтесь.");
+
+            btns[0].CreateBttn(30,8);
+            btns[1].CreateBttn(30,12);
             
-            SetPos(30,8);
-            Console.Write("Войти");
-            
-            SetPos(30,12);
-            Console.Write("Зарегистрироваться");
             ConsoleKeyInfo consoleKeyInfo = new ConsoleKeyInfo();
-            Console.ReadKey(true);
+            ReadKey(true);
             while (consoleKeyInfo.Key != ConsoleKey.Escape)
             {
-                consoleKeyInfo = Console.ReadKey();
+                consoleKeyInfo = ReadKey();
                 switch (consoleKeyInfo.Key)
                 {
                     case ConsoleKey.UpArrow :
-                        SetPos(30,12);
-                        Console.Write("Зарегистрироваться");
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        SetPos(30,8);
-                        Console.Write("Войти");
-                        Console.ResetColor();
-                        consoleKeyInfo = Console.ReadKey();
+                        btns[0].EnableBtn();
+                        btns[1].PrintButton();
+                        consoleKeyInfo = ReadKey();
                         if (consoleKeyInfo.Key == ConsoleKey.Enter) Signin();
                             break;
                     case ConsoleKey.DownArrow :
-                        SetPos(30,8);
-                        Console.Write("Войти");
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        SetPos(30,12);
-                        Console.Write("Зарегистрироваться");
-                        Console.ResetColor();
-                        consoleKeyInfo = Console.ReadKey();
+                        btns[1].EnableBtn();
+                        btns[0].PrintButton();
+                        consoleKeyInfo = ReadKey();
                         if (consoleKeyInfo.Key == ConsoleKey.Enter) Registration();
                         break;
                 }
             }
-            
+
+            void PrintAllBtn()
+            {
+                foreach (var btn in btns)
+                {
+                    btn.PrintButton();
+                }
+            }
+
+
         }
         
     }

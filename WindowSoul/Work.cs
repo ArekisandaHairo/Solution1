@@ -44,23 +44,12 @@ namespace WindowSoul
             _list[_activeWin] = new Window(0, 0, Console.WindowWidth - 1, Console.WindowHeight - 1, s, true);
         }
 
-        public void Exit()
+        public static void Exit()
         {
             string s = "Как я устал пилить эту херню.";
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.BackgroundColor = ConsoleColor.Blue;
-            for (int i = 0; i < Console.WindowHeight/2; i++)
-            {
-                for (int j = 0; j < Console.WindowWidth; j+=2)
-                {
-                    Console.Write("Aa");
-                }
-            }
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.BackgroundColor = ConsoleColor.Yellow;
-
-            for (int i = Console.WindowHeight/2; i < Console.WindowHeight; i++)
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            for (int i = 0; i < Console.WindowHeight; i++)
             {
                 for (int j = 0; j < Console.WindowWidth; j+=2)
                 {
@@ -68,12 +57,13 @@ namespace WindowSoul
                 }
             }
             Console.SetCursorPosition(Console.WindowWidth / 2 - s.Length / 2, Console.WindowHeight / 2);
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(s);
+            Console.SetCursorPosition(0,0);
             System.Threading.Thread.Sleep(5000);
             Environment.Exit(0);
         }
-        public void Window_Comands()
+        public void KeysActivity()
         {
             int count = _list.Count;
             int tabCount = 0;
