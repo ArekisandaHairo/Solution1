@@ -37,7 +37,7 @@ namespace WindowSoul
         internal virtual ref string str() => ref a;
 
         internal virtual string Input() => null;
-        internal virtual void TextI(int x, int y, int w, int h){ }
+        internal virtual void Draw(){ }
         protected void SetPos(int x, int y) => Console.SetCursorPosition(PosX+1+x,PosY+3+y);
     }
 }

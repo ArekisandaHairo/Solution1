@@ -12,7 +12,7 @@ namespace WindowSoul
             _title = title;
         }
 
-        public void Draw()
+        internal override void Draw()
         {
             Console.SetCursorPosition(PosX + 1, PosY + 1);
             Console.Write(_title);
@@ -20,5 +20,6 @@ namespace WindowSoul
             Console.Write(Constants.Svert + Constants.Razvert + Constants.Close);
             Drawerhor(PosX, PosY + 2, Weiht, "#");
         }
+        
     }
 }

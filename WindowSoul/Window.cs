@@ -5,14 +5,14 @@ namespace WindowSoul
     public class Window : Conteiner
     {
         private bool _off;
-        internal readonly Header _header;
 
         public Window(int posX, int posY, int weiht, int height, string title, bool off) : base(posX, posY, weiht,
             height)
         {
             _listelems.Add(new Text(posX, posY, weiht, height, ""));
             _listelems.Add(new Text_Input(posX, posY, weiht, height));
-            _header = new Header(title, posX, posY, weiht, height);
+            _listelems.Add(new Header(title, posX, posY, weiht, height));
+            _listelems.Add(new Buttons(posX,posY,weiht,height,""));
             _off = off;
         }
 
@@ -37,16 +37,13 @@ namespace WindowSoul
             }
             
         }
-        public void Draw()
+        internal override void Draw()
         {
             if (_off)
             {
                 Drower.DrawBord(PosX, PosY, Weiht, Height);
                 Drower.Cler(PosX, PosY, Weiht, Height);
-                SetPos(0,0);
-                Active(typeof(Text));
-                _listelems[Active(typeof(Text))].TextI(PosX,PosY,Weiht,Height);
-                _header.Draw();
+                foreach (var listelem in _listelems) listelem.Draw();
             }
         }
 
@@ -62,7 +59,7 @@ namespace WindowSoul
             {
                 PosX = x;
                 PosY = y;
-                _header.Move(x, y);
+                foreach (var listelem in _listelems) listelem.Move(x,y);
             }
         }
 
@@ -72,7 +69,7 @@ namespace WindowSoul
             {
                 Weiht = x;
                 Height = y;
-                _header.Change(x, y);
+                foreach (var listelem in _listelems) listelem.Change(x,y);
             }
         }
 

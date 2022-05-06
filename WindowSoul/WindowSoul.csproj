@@ -41,7 +41,7 @@
     <ItemGroup>
         <Compile Include="AvtoReg.cs" />
         <Compile Include="bufer.cs" />
-        <Compile Include="ButtonsWin.cs" />
+        <Compile Include="Buttons.cs" />
         <Compile Include="Constants.cs" />
         <Compile Include="Conteiner.cs" />
         <Compile Include="Drower.cs" />

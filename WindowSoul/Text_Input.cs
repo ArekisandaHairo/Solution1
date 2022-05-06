@@ -20,7 +20,7 @@ namespace WindowSoul
         internal void Password()
         {
             ConsoleKeyInfo s = new ConsoleKeyInfo();
-            while (s.KeyChar !=13)
+            while (s.KeyChar != 13)
             {
                 s = Console.ReadKey();
                 Console.Write("*");

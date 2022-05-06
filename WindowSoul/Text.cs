@@ -11,11 +11,11 @@ namespace WindowSoul
         }
 
 
-        internal override void TextI(int x, int y, int w, int h)
+        internal override void Draw()
         {
             if (text != null)
             {
-                Insert_LF_n(x, y, text, w - 1, h);
+                Insert_LF_n(PosX, PosY, text, Weiht - 1, Height);
             }
         }
 

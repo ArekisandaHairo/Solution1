@@ -2,13 +2,13 @@ using System;
 
 namespace WindowSoul
 {
-    public class ButtonsWin : View
+    public class Buttons : View
     {
         private string _text;
         public bool _bttn;
         private int x, y;
 
-        public ButtonsWin(int posX, int posY, int weiht, int height, string t) : base(posX, posY, weiht, height)
+        public Buttons(int posX, int posY, int weiht, int height, string t) : base(posX, posY, weiht, height)
         {
             _text = t;
             _bttn = false;
