@@ -47,7 +47,7 @@
         <Compile Include="Drower.cs" />
         <Compile Include="Header.cs" />
         <Compile Include="Text.cs" />
-        <Compile Include="Text_Input.cs" />
+        <Compile Include="TextInput.cs" />
         <Compile Include="View.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

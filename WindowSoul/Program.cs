@@ -10,8 +10,28 @@ namespace WindowSoul
         {
             // Авторизация
             List<View> windows = new List<View>();
-            Rabota();
-            ReadKey();
+            Window _window = new Window(0, 0, 40, 20, "Sing in / Sing up",
+                true);
+            windows.Add(_window);
+            CursorVisible = false;
+            windows[0].AddButtons(new Buttons(_window.PosX, _window.PosY, _window.Weiht, _window.Height, "Войти"));
+            windows[0].AddButtons(new Buttons(_window.PosX, _window.PosY, _window.Weiht, _window.Height,
+                "Зарегистрироваться"));
+            windows[0].AddTexts(new Text(_window.PosX, _window.PosY, _window.Weiht, _window.Height,
+                "Приветствую юзер, пожалуйста, пройдите регистрацию, что бы войти в систему."));
+            windows[0].SetPosElem(2, 0, 0);
+            // закинуть делегата в кнопку
+            windows[0].AddDelegate(Signin, 1);
+            windows[0].AddDelegate(Registration, 2);
+            // поместить кнопку в указанную позицию
+            windows[0].SetPosElem(0, 3, 3);
+            windows[0].SetPosElem(1, 3, 6);
+            // SetCursorPosition(3, 5);
+            // Write("Приветствую, пожалуйста войдите в систему или зарегестрируйтесь.");
+            Work work1 = new Work(windows, 0);
+            work1.PrintWin();
+            work1.KeysActivity();
+
 
             Console.Title = "Hairo";
             windows.Add(new Window(0, 0, 10, 10, "Okno0", true));
@@ -23,71 +43,30 @@ namespace WindowSoul
             Work.Exit();
 
 
-            void Rabota()
+            void Signin()
             {
-                Window _window = new Window(0, 0, Console.WindowWidth - 1, Console.WindowHeight - 1, "Registration",
-                    true);
-                _window.Draw();
-                CursorVisible = false;
-                List<Buttons> btns = new List<Buttons>();
-                btns.Add(new Buttons(_window.PosX, _window.PosY, _window.Weiht, _window.Height, "Войти"));
-                btns.Add(new Buttons(_window.PosX, _window.PosY, _window.Weiht, _window.Height, "Зарегистрироваться"));
-                SetCursorPosition(3, 5);
-                Write("Приветствую, пожалуйста войдите в систему или зарегестрируйтесь.");
+                windows.Add(new Window(10, 10, 30, 20, "Вход", true));
+                windows[1].AddTextInputting(new TextInput(windows[1].PosX, windows[1].PosY, windows[1].Weiht, windows[1].Height));
+                windows[1].AddTextInputting(new TextInput(windows[1].PosX, windows[1].PosY, windows[1].Weiht, windows[1].Height));
+                windows[1].AddTexts(new Text(windows[1].PosX, windows[1].PosY, windows[1].Weiht, windows[1].Height,
+                    "Введите почту и пароль"));
+                
+                windows[1].SetPosElem(0, 3, 3);
+                windows[1].SetPosElem(1, 3, 6);
+                windows[1].SetPosElem(2, 2, 1);
+                
 
-                btns[0].CreateBttn(30, 8);
-                btns[1].CreateBttn(30, 12);
+            }
 
-                ConsoleKeyInfo consoleKeyInfo = new ConsoleKeyInfo();
-                ReadKey(true);
-                while (consoleKeyInfo.Key != ConsoleKey.Escape)
-                {
-                    consoleKeyInfo = ReadKey();
-                    switch (consoleKeyInfo.Key)
-                    {
-                        case ConsoleKey.UpArrow:
-                            btns[0].EnableBtn();
-                            btns[1].PrintButton();
-                            if (ReadKey().Key == ConsoleKey.Enter) Signin();
-                            break;
-                        case ConsoleKey.DownArrow:
-                            btns[1].EnableBtn();
-                            btns[0].PrintButton();
-                            consoleKeyInfo = ReadKey();
-                            if (ReadKey().Key == ConsoleKey.Enter) Registration();
-                            break;
-                    }
-                }
-
-                void PrintAllBtn()
-                {
-                    foreach (var btn in btns)
-                    {
-                        btn.PrintButton();
-                    }
-                }
-
-                void Signin()
-                {
-                    _window.Draw();
-                    Console.SetCursorPosition(30, 4);
-                    Write("Вход");
-                    Text_Input textInput1 = new Text_Input(_window.PosX, _window.PosY, _window.Weiht, _window.Height);
-                    SetCursorPosition(10, 10);
-                    textInput1.Password();
-                }
-
-                void Registration()
-                {
-                    _window.Draw();
-                    SetCursorPosition(30, 4);
-                    Write("Регистрация");
-
-                    // while (true)
-                    // {
-
-                    // }
-                }
+            void Registration()
+            {
+                windows.Add(new Window(10, 10, 25, 20, "Регистрация", true));
+                // Поле ввода почты
+                // Поле ввода номера телефона
+                // Поле ввода пароля
+                // Поле ввода повторного пароля
+                // Кнопка сохранения данных+входа
+                // Кнопка Рестарта
             }
 
 

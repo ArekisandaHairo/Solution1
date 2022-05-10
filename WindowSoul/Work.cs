@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace WindowSoul
 {
@@ -17,19 +18,11 @@ namespace WindowSoul
 
         public void PrintWin()
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.Clear();
-            foreach (var view in _list)
-            {
-                if (view != _list[_activeWin])
-                {
-                    var list = (Window) view;
-                    list.Draw();
-                }
-            }
-
+            foreach (var view in _list) if (view != _list[_activeWin]) view.Draw();
             Console.ForegroundColor = ConsoleColor.Green;
-            var list1 = (Window) _list[_activeWin];
-            list1.Draw();
+            _list[_activeWin].Draw();
             Console.ForegroundColor = ConsoleColor.Blue;
         }
 
@@ -146,11 +139,10 @@ namespace WindowSoul
                         _list[_activeWin].Change(_list[_activeWin].Weiht + 1, _list[_activeWin].Height);
                         PrintWin();
                         break;
-                    
-                    case ConsoleKey.E: // Ввод текса в окно
-                        _list[_activeWin].Inp();
-                        PrintWin();
-                        break;
+                    // case ConsoleKey.Q: // Ввод текса в окно ( Режим Разработчика)
+                    //     _list[_activeWin].AddContainer();
+                    //     PrintWin();
+                    //     break;
                     case ConsoleKey.Tab: // Нажатие на "Tab" меняет фокус активного окна 
                         if (tabCount < _list.Count - 1)
                         {
@@ -165,6 +157,35 @@ namespace WindowSoul
                             PrintWin();
                         }
 
+                        break;
+                    case ConsoleKey.Enter :
+                        int counter=0;
+                        while (keyInfo.Key != ConsoleKey.Z)
+                        {
+                            keyInfo = Console.ReadKey(true);
+                            switch (keyInfo.Key)
+                            {
+                                case ConsoleKey.Tab:
+                                    if (counter < _list[_activeWin].CounterButtons() )
+                                    {
+                                        counter++;
+                                        _list[_activeWin].ChangeContainerElement(counter);
+                                        PrintWin();
+                                    }
+                                    else if (counter == _list[_activeWin].CounterButtons())
+                                    {
+                                        counter = 1;
+                                        _list[_activeWin].ChangeContainerElement(counter);
+                                        PrintWin();
+                                    }
+                                    break;
+                                case ConsoleKey.E: // Ввод текса в окно ( Режим Разработчика)
+                                    _list[_activeWin].Inp();
+                                    PrintWin();
+                                    break;
+                            }
+
+                        }
                         break;
                 }
             }
