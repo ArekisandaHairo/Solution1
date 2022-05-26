@@ -6,12 +6,13 @@ namespace WindowSoul
     {
         private string _text;
         private int _x, _y;
-        public Text(int posX, int posY, int weiht, int height, string text) : base(posX, posY, weiht, height)
+        public Text(int posX, int posY, int weight, int height, string text) : base(posX, posY, weight, height)
         {
             _text = text;
         }
 
-        public override void Put_in_place(int x, int y)
+
+        internal override void Put_in_place(int x, int y)
         {
             _x = x;
             _y = y;
@@ -20,14 +21,11 @@ namespace WindowSoul
         {
             if (_text != null)
             {
-                Insert_LF_n(PosX, PosY, _text, Weiht - 1, Height);
+                Insert_LF_n(PosX, PosY, _text, Weight - 1, Height);
             }
         }
 
-        internal override ref string Str()
-        {
-            return ref _text;
-        }
+        
 
         private void Insert_LF_n(int x, int y, string s, int width, int height)
         {

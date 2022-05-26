@@ -7,7 +7,7 @@ namespace WindowSoul
     {
         private string _title;
 
-        public Header(string title, int posX, int posY, int weiht, int height) : base(posX, posY, weiht, height)
+        public Header(string title, int posX, int posY, int weight, int height) : base(posX, posY, weight, height)
         {
             _title = title;
         }
@@ -16,9 +16,9 @@ namespace WindowSoul
         {
             Console.SetCursorPosition(PosX + 1, PosY + 1);
             Console.Write(_title);
-            Console.SetCursorPosition(PosX + Weiht - 8, PosY);
+            Console.SetCursorPosition(PosX + Weight - 8, PosY);
             Console.Write(Constants.Svert + Constants.Razvert + Constants.Close);
-            Drawerhor(PosX, PosY + 2, Weiht, "#");
+            Drawerhor(PosX, PosY + 2, Weight, "#");
         }
         
     }

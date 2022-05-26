@@ -1,70 +1,142 @@
 using System;
-using System.Collections.Generic;
 
 namespace WindowSoul
 {
     public class TextInput : View
     {
-        private List<int> pasword;
+        // private string returnsChars;
         private int _x, _y;
-        public TextInput(int posX, int posY, int weiht, int height) : base(posX, posY, weiht, height)
+        internal ButtonVoid _buttonVoid;
+        private string _type;
+        private string textvisibility;
+        private string textsave;
+        public TextInput(int posX, int posY, int weight, int height) : base(posX, posY, weight, height)
         {
-           
+            _buttonVoid = () => Inject();
+            textvisibility = "_______________";
         }
-        public override void Put_in_place(int x, int y)
+
+        public override void SetType(string stri)
+        {
+            _type = stri;
+        }
+        internal override void UseMethod()
+        {
+            _buttonVoid();
+        }
+
+        // private void Shearing(ConsoleKeyInfo consoleKey, ref string sheartext)
+        // {
+        //     Console.Write(consoleKey.Key.ToString().ToLower());
+        //     textsave += consoleKey.Key.ToString().ToLower();
+        // }
+
+        private void Inject()
+        {
+            textsave = "";
+            // ConsoleKeyInfo consoleKeyInfo = new ConsoleKeyInfo();
+            SetPos(_x,_y);
+            // int cou = 0;
+            textsave = Console.ReadLine();
+            // while (consoleKeyInfo.Key != ConsoleKey.Enter)
+            // {
+            //     consoleKeyInfo = Console.ReadKey(true);
+            //     if ((consoleKeyInfo.KeyChar >= 47 && consoleKeyInfo.KeyChar <= 91) || consoleKeyInfo.KeyChar == 32)
+            //     {
+            //         cou++;
+            //         Shearing(consoleKeyInfo, ref textsave);
+            //     }
+            //     if (consoleKeyInfo.Key == ConsoleKey.Backspace)
+            //     {
+            //         SetPos(_x+cou-1,_y);
+            //         textsave.Remove(cou-1);
+            //         Console.Write(" ");
+            //         SetPos(_x+cou-1,_y);
+            //         if (cou > 1) cou -= 1;
+            //     }
+            // }
+
+            if (_type == "text")
+            {
+                textvisibility = "";
+                textvisibility = textsave;
+            }
+            if (_type == "mail" && Mail())
+            {
+                textvisibility = "";
+                textvisibility = textsave;
+            }
+            if (_type == "pass")
+            {
+                Password();
+                textvisibility = "";
+                textvisibility = textsave;
+            }
+            if (_type == "phone" && Phone())
+            {
+                textvisibility = "";
+                textvisibility = textsave;
+            }
+            
+        }
+        internal override void Draw()
+        {
+            SetPos(_x,_y);
+            Console.Write(textvisibility);
+        }
+        internal override void Put_in_place(int x, int y)
         {
             _x = x;
             _y = y;
         }
 
-        internal override void SelectInp(string str)
+        private void Password()
         {
-            
-        }
-        internal override string Input()
-        {
-            string text = Console.ReadLine();
-            return text;
-        }
-
-        internal void Password()
-        {
-            ConsoleKeyInfo s = new ConsoleKeyInfo();
-            while (s.KeyChar != 13)
+            string s ="";                
+            SetPos(_x,_y);
+            for (int i = 0; i < textsave.Length; i++)
             {
-                s = Console.ReadKey();
-                Console.Write("*");
-                pasword.Add(s.KeyChar);
+                s+="*";
             }
+
+            textsave = s;
         }
         internal bool Mail()
         {
-            string str = Console.ReadLine();
-            int fl = 0;
-            bool c = false;
-            foreach (var b in str)
+            int rule = 0;
+            foreach (var s in textsave)
             {
-                if (b == '@' || b == '.')
+                if (s == '@' || s == '.')
                 {
-                    fl++;
+                    rule++;
                 }
             }
-            if (fl >= 2)
+
+            if (rule == 2)
             {
-                c = true;
+                return true;
             }
 
-            return c;
+            return false;
         }
-        internal void Pisanina()
+        private bool Phone()
         {
-            
-        }
-        internal bool Phone()
-        {
-            bool c = false;
+            int i=0;
+            foreach (char VARIABLE in textsave)
+            {
+                try
+                {
+                    i += Convert.ToInt32(VARIABLE);
+                }
+                catch (Exception e)
+                {
+                    SetPos(_x-6,_y);
+                    Console.WriteLine("Error");
+                    throw;
+                }
+            }
 
-            return c;
+            return false;
         }
     }
 }

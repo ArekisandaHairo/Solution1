@@ -1,22 +1,21 @@
 
 using System;
-using System.Collections.Generic;
 
 namespace WindowSoul
 {
+    internal delegate void ButtonVoid();
     public class View
     {
         internal int PosX;
         internal int PosY;
-        internal int Weiht;
+        internal int Weight;
         internal int Height;
-        private string _a;
         
 
-        protected View(int posX, int posY, int weiht, int height)
+        protected View(int posX, int posY, int weight, int height)
         {
             Height = height;
-            Weiht = weiht;
+            Weight = weight;
             PosX = posX;
             PosY = posY;
         }
@@ -29,29 +28,25 @@ namespace WindowSoul
 
         internal virtual void Change(int x, int y)
         {
-            Weiht = x;
+            Weight = x;
             Height = y;
         }
 
         internal virtual void Collapse(ref bool c){}
         internal virtual void Inp(){}
-        internal virtual ref string Str() => ref _a;
 
-        internal virtual string Input() => null;
+        public virtual void SetType(string stri){}
+
         internal virtual void Draw(){ }
-        internal virtual void AddButtons( Buttons name){ }
-        internal virtual void AddTexts(Text name) {}
-        internal virtual void AddTextInputting(TextInput name){}
-        protected void SetPos(int x, int y) => Console.SetCursorPosition(PosX+1+x,PosY+3+y);
-        internal virtual void AddContainer(){}
+        internal virtual void AddButtons( string content, int x, int y, ButtonVoid method){ }
+        internal virtual void AddTexts(string text, int x, int y) {}
+        internal virtual void AddTextInputting(string type, int x, int y){}
+        protected  void SetPos(int x, int y) => Console.SetCursorPosition(PosX+1+x,PosY+3+y);
         internal virtual void ChangeContainerElement(int i){}
         internal virtual void UseMethod(){ }
-        internal virtual void AddDelegate(ButtonVoid buttonVoid, int a){}
         internal virtual void Deg( ButtonVoid buttonVoid){ }
 
-        internal virtual void SetPosElem(int ElemIndex, int x, int y){}
-        public virtual void Put_in_place(int x, int y) { }
-        internal virtual int CounterButtons() => 0;
-        internal virtual void SelectInp(string str) { }
+        internal virtual void Put_in_place(int x, int y) { }
+        internal virtual int UsedThings() => 0;
     }
 }

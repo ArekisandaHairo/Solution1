@@ -1,6 +1,7 @@
 ﻿using System;
 using static System.Console;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace WindowSoul
 {
@@ -9,58 +10,52 @@ namespace WindowSoul
         public static void Main(string[] args)
         {
             // Авторизация
-            List<View> windows = new List<View>();
+            List<View> windows1 = new List<View>();
             Window _window = new Window(0, 0, 40, 20, "Sing in / Sing up",
                 true);
-            windows.Add(_window);
-            CursorVisible = false;
-            windows[0].AddButtons(new Buttons(_window.PosX, _window.PosY, _window.Weiht, _window.Height, "Войти"));
-            windows[0].AddButtons(new Buttons(_window.PosX, _window.PosY, _window.Weiht, _window.Height,
-                "Зарегистрироваться"));
-            windows[0].AddTexts(new Text(_window.PosX, _window.PosY, _window.Weiht, _window.Height,
-                "Приветствую юзер, пожалуйста, пройдите регистрацию, что бы войти в систему."));
-            windows[0].SetPosElem(2, 0, 0);
-            // закинуть делегата в кнопку
-            windows[0].AddDelegate(Signin, 1);
-            windows[0].AddDelegate(Registration, 2);
-            // поместить кнопку в указанную позицию
-            windows[0].SetPosElem(0, 3, 3);
-            windows[0].SetPosElem(1, 3, 6);
-            // SetCursorPosition(3, 5);
-            // Write("Приветствую, пожалуйста войдите в систему или зарегестрируйтесь.");
-            Work work1 = new Work(windows, 0);
+            CursorVisible = true;
+            _window.AddTexts("Приветствую юзер, пожалуйста, пройдите регистрацию, что бы войти в систему.", 0, 0);
+            _window.AddButtons("Войти", 3, 3, Signin);
+            _window.AddButtons("Зарегистрироваться", 3, 6,Registration);
+            windows1.Add(_window);
+            Work work1 = new Work(windows1, 0);
             work1.PrintWin();
             work1.KeysActivity();
+            // work1.RemoveWins();
 
 
-            Console.Title = "Hairo";
-            windows.Add(new Window(0, 0, 10, 10, "Okno0", true));
-            windows.Add(new Window(20, 10, 40, 15, "Okno1", true));
-            windows.Add(new Window(30, 5, 50, 20, "Okno2", true));
-            Work work = new Work(windows, 0);
-            work.PrintWin();
-            work.KeysActivity();
-            Work.Exit();
+
+            void WorkTable()
+            {
+                // Thread.Sleep(100);
+                // 
+                // Thread.Sleep(100);
+                List<View> windows = new List<View>();
+                Console.Title = "Hairo";
+                Window anketa = new Window(10, 10, 30, 20, "Анкета", true);
+                anketa.AddTexts("Список возможностей", 2, 1);
+                windows.Add(anketa);
+                Work work = new Work(windows, 0);
+                work.PrintWin();
+                work.KeysActivity();
+                Work.Exit();
+            }
 
 
             void Signin()
             {
-                windows.Add(new Window(10, 10, 30, 20, "Вход", true));
-                windows[1].AddTextInputting(new TextInput(windows[1].PosX, windows[1].PosY, windows[1].Weiht, windows[1].Height));
-                windows[1].AddTextInputting(new TextInput(windows[1].PosX, windows[1].PosY, windows[1].Weiht, windows[1].Height));
-                windows[1].AddTexts(new Text(windows[1].PosX, windows[1].PosY, windows[1].Weiht, windows[1].Height,
-                    "Введите почту и пароль"));
-                
-                windows[1].SetPosElem(0, 3, 3);
-                windows[1].SetPosElem(1, 3, 6);
-                windows[1].SetPosElem(2, 2, 1);
-                
+                Window singWindow = new Window(10, 10, 30, 20, "Вход", true);
+                singWindow.AddTexts("Введите почту и пароль", 2, 1);
+                singWindow.AddTextInputting( "mail", 3, 3);
+                singWindow.AddTextInputting("pass", 3, 5);
+                singWindow.AddButtons("Войти", 3, 7, WorkTable);
 
+                windows1.Add(singWindow);
             }
 
             void Registration()
             {
-                windows.Add(new Window(10, 10, 25, 20, "Регистрация", true));
+                windows1.Add(new Window(10, 10, 25, 20, "Регистрация", true));
                 // Поле ввода почты
                 // Поле ввода номера телефона
                 // Поле ввода пароля
@@ -72,6 +67,7 @@ namespace WindowSoul
 
             /*
              * Сделать перебор кнопок
+             *  сделать текстинпут основываясь на старых данных
              *  Реализовать нажатие кнопки (_ [} X)
              *  Password, mail, phone, text - тип текстов ( Text )
              *users.txt  -> ( id, mail, password(hash), FIO )

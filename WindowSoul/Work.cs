@@ -1,18 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace WindowSoul
 {
     public class Work
     {
         private List<View> _list;
-        public int _activeWin;
+        private int _activeWin;
 
-        public Work(List<View> list, int activeWin)
+        public Work(List<View> list, int ActiveWindows)
         {
             _list = list;
-            _activeWin = activeWin;
+            _activeWin = ActiveWindows;
             
         }
 
@@ -20,7 +21,7 @@ namespace WindowSoul
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Clear();
-            foreach (var view in _list) if (view != _list[_activeWin]) view.Draw();
+            foreach (var view in _list) view.Draw();
             Console.ForegroundColor = ConsoleColor.Green;
             _list[_activeWin].Draw();
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -56,13 +57,23 @@ namespace WindowSoul
             System.Threading.Thread.Sleep(5000);
             Environment.Exit(0);
         }
+
+        public void RemoveWins()
+        {
+            for (int i = 1; i < _list.Count-1; i++)
+            {
+                _list.RemoveAt(i);
+            }
+        }
+
+        
         public void KeysActivity()
         {
             int count = _list.Count;
             int tabCount = 0;
             // Поместить в отдельный класс
             bool c = true, c1 = true;
-            int w = _list[_activeWin].Weiht, h = _list[_activeWin].Height;
+            int w = _list[_activeWin].Weight, h = _list[_activeWin].Height;
             ConsoleKeyInfo keyInfo = new ConsoleKeyInfo();
             while (keyInfo.Key != ConsoleKey.Escape)
             {
@@ -124,19 +135,19 @@ namespace WindowSoul
                         break;
                     // Размеры окна
                     case ConsoleKey.I:
-                        _list[_activeWin].Change(_list[_activeWin].Weiht, _list[_activeWin].Height + 1);
+                        _list[_activeWin].Change(_list[_activeWin].Weight, _list[_activeWin].Height + 1);
                         PrintWin();
                         break;
                     case ConsoleKey.J:
-                        _list[_activeWin].Change(_list[_activeWin].Weiht - 1, _list[_activeWin].Height);
+                        _list[_activeWin].Change(_list[_activeWin].Weight - 1, _list[_activeWin].Height);
                         PrintWin();
                         break;
                     case ConsoleKey.K:
-                        _list[_activeWin].Change(_list[_activeWin].Weiht, _list[_activeWin].Height - 1);
+                        _list[_activeWin].Change(_list[_activeWin].Weight, _list[_activeWin].Height - 1);
                         PrintWin();
                         break;
                     case ConsoleKey.L:
-                        _list[_activeWin].Change(_list[_activeWin].Weiht + 1, _list[_activeWin].Height);
+                        _list[_activeWin].Change(_list[_activeWin].Weight + 1, _list[_activeWin].Height);
                         PrintWin();
                         break;
                     // case ConsoleKey.Q: // Ввод текса в окно ( Режим Разработчика)
@@ -166,18 +177,21 @@ namespace WindowSoul
                             switch (keyInfo.Key)
                             {
                                 case ConsoleKey.Tab:
-                                    if (counter < _list[_activeWin].CounterButtons() )
-                                    {
-                                        counter++;
-                                        _list[_activeWin].ChangeContainerElement(counter);
-                                        PrintWin();
-                                    }
-                                    else if (counter == _list[_activeWin].CounterButtons())
-                                    {
-                                        counter = 1;
-                                        _list[_activeWin].ChangeContainerElement(counter);
-                                        PrintWin();
-                                    }
+                                    counter = counter < _list[_activeWin].UsedThings() ? ++counter : 0;
+                                    _list[_activeWin].ChangeContainerElement(counter);
+                                    PrintWin();
+                                    // if (counter < _list[_activeWin].UsedThings() )
+                                    // {
+                                    //     counter++;
+                                    //     _list[_activeWin].ChangeContainerElement(counter);
+                                    //     PrintWin();
+                                    // }
+                                    // else
+                                    // {
+                                    //     counter = 0;
+                                    //     _list[_activeWin].ChangeContainerElement(counter);
+                                    //     PrintWin();
+                                    // }
                                     break;
                                 case ConsoleKey.E: // Ввод текса в окно ( Режим Разработчика)
                                     _list[_activeWin].Inp();

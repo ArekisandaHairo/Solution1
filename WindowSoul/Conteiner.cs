@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 
 namespace WindowSoul
 {
@@ -8,36 +10,21 @@ namespace WindowSoul
         internal List<View> _listelems;
         internal int _activeElem;
 
-        protected Conteiner(int posX, int posY, int weiht, int height) : base(posX, posY, weiht, height)
+        protected Conteiner(int posX, int posY, int weight, int height) : base(posX, posY, weight, height)
         {
             _listelems = new List<View>();
-            _activeElem = 2;
+            _activeElem = 0;
         }
-        protected int Active(Type a, int i)
+        protected int ElemIntAc(int i)
         {
-            int count = 0;
-            for (var index = 1; index < _listelems.Count; index++)
-            {
-                var view = _listelems[index];
-                if (view.GetType() == a && ++count == i)
-                {
-                    return index;
-                }
-            }
-            return 0;
+            var count = 0;
+            return _listelems.Where(views => views.GetType() != typeof(Text))
+                .Any(views => views.GetType() != typeof(Text) && ++count == i) ? count : count-=1;
         }
-        internal override int CounterButtons()
+
+        internal override int UsedThings()
         {
-            int count = 0;
-            for (var index = 0; index < _listelems.Count; index++)
-            {
-                var view = _listelems[index];
-                if (view.GetType() == typeof(Buttons))
-                {
-                    count++;
-                }
-            }
-            return count;
+            return _listelems.Count(view => view.GetType() != typeof(Text));
         }
     }
 }
