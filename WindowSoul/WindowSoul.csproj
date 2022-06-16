@@ -45,6 +45,7 @@
         <Compile Include="Constants.cs" />
         <Compile Include="Conteiner.cs" />
         <Compile Include="Drower.cs" />
+        <Compile Include="FileSource.cs" />
         <Compile Include="Header.cs" />
         <Compile Include="Text.cs" />
         <Compile Include="TextInput.cs" />

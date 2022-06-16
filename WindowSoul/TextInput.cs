@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 
 namespace WindowSoul
 {
@@ -101,6 +102,7 @@ namespace WindowSoul
 
             textsave = s;
         }
+        // ____ / @ / ___ / . / __
         internal bool Mail()
         {
             int rule = 0;
@@ -127,11 +129,13 @@ namespace WindowSoul
                 try
                 {
                     i += Convert.ToInt32(VARIABLE);
+                    return true;
                 }
                 catch (Exception e)
                 {
                     SetPos(_x-6,_y);
                     Console.WriteLine("Error");
+                    Thread.Sleep(1000);
                     throw;
                 }
             }

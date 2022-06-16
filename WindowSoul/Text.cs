@@ -8,6 +8,7 @@ namespace WindowSoul
         private int _x, _y;
         public Text(int posX, int posY, int weight, int height, string text) : base(posX, posY, weight, height)
         {
+            SetPos(_x,_y);
             _text = text;
         }
 

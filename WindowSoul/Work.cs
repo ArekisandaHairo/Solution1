@@ -154,19 +154,21 @@ namespace WindowSoul
                     //     _list[_activeWin].AddContainer();
                     //     PrintWin();
                     //     break;
-                    case ConsoleKey.Tab: // Нажатие на "Tab" меняет фокус активного окна 
-                        if (tabCount < _list.Count - 1)
-                        {
-                            tabCount++;
-                            _activeWin = tabCount;
-                            PrintWin();
-                        }
-                        else if (tabCount == _list.Count - 1)
-                        {
-                            tabCount = 0;
-                            _activeWin = tabCount;
-                            PrintWin();
-                        }
+                    case ConsoleKey.Tab: // Нажатие на "Tab" меняет фокус активного окна
+                        _activeWin = tabCount < _list.Count - 1 ? ++tabCount : 0;
+                        PrintWin();
+                        // if (tabCount < _list.Count - 1)
+                        // {
+                        //     tabCount++;
+                        //     _activeWin = tabCount;
+                        //     PrintWin();
+                        // }
+                        // else if (tabCount == _list.Count - 1)
+                        // {
+                        //     tabCount = 0;
+                        //     _activeWin = tabCount;
+                        //     PrintWin();
+                        // }
 
                         break;
                     case ConsoleKey.Enter :
@@ -180,18 +182,6 @@ namespace WindowSoul
                                     counter = counter < _list[_activeWin].UsedThings() ? ++counter : 0;
                                     _list[_activeWin].ChangeContainerElement(counter);
                                     PrintWin();
-                                    // if (counter < _list[_activeWin].UsedThings() )
-                                    // {
-                                    //     counter++;
-                                    //     _list[_activeWin].ChangeContainerElement(counter);
-                                    //     PrintWin();
-                                    // }
-                                    // else
-                                    // {
-                                    //     counter = 0;
-                                    //     _list[_activeWin].ChangeContainerElement(counter);
-                                    //     PrintWin();
-                                    // }
                                     break;
                                 case ConsoleKey.E: // Ввод текса в окно ( Режим Разработчика)
                                     _list[_activeWin].Inp();
