@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading;
 
 namespace WindowSoul
@@ -17,25 +18,38 @@ namespace WindowSoul
 
         internal override void ChangeContainerElement(int i) => _activeElem = ElemIntAc(i);
 
+        internal override string SearchTag(string tag)
+        {
+            var str = "";
+            foreach (var VARIABLE in _listelems.Where(VARIABLE => VARIABLE.GetTag() == tag))
+            {
+                str = VARIABLE.GetInfoT();
+            } return str;
+        }
 
-        internal override void AddButtons(string content, int x, int y, ButtonVoid method)
+        
+
+        internal override void AddButtons(string content, int x, int y, ButtonVoid method, string tag)
         {
             _listelems.Add(new Buttons(PosX, PosY, Weight, Height, content));
             _listelems[_listelems.Count - 1].Put_in_place(x,y);
             _listelems[_listelems.Count - 1].Deg(method);
+            _listelems[_listelems.Count - 1].SetTag(tag);
         }
 
-        internal override void AddTexts(string text, int x, int y)
+        internal override void AddTexts(string text, int x, int y, string tag)
         {
             _listelems.Add(new Text(PosX, PosY, Weight, Height, text));
             _listelems[_listelems.Count - 1].Put_in_place(x,y);
+            _listelems[_listelems.Count - 1].SetTag(tag);
         }
 
-        internal override void AddTextInputting(string type, int x, int y)
+        internal override void AddTextInputting(string type, int x, int y, string tag)
         {
             _listelems.Add(new TextInput(PosX, PosY, Weight, Height));
             _listelems[_listelems.Count - 1].SetType(type);
             _listelems[_listelems.Count - 1].Put_in_place(x,y);
+            _listelems[_listelems.Count - 1].SetTag(tag);
         }
 
 

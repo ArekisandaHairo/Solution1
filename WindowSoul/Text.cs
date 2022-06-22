@@ -6,12 +6,19 @@ namespace WindowSoul
     {
         private string _text;
         private int _x, _y;
+        public string Tag;
         public Text(int posX, int posY, int weight, int height, string text) : base(posX, posY, weight, height)
         {
             SetPos(_x,_y);
             _text = text;
         }
+        public override void SetTag(string tag)
+        {
+            Tag = tag;
+        }
 
+        internal override string GetTag() => Tag;
+        internal override string GetInfoT() => _text;
 
         internal override void Put_in_place(int x, int y)
         {

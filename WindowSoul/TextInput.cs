@@ -6,6 +6,7 @@ namespace WindowSoul
     public class TextInput : View
     {
         // private string returnsChars;
+        public string Tag;
         private int _x, _y;
         internal ButtonVoid _buttonVoid;
         private string _type;
@@ -20,6 +21,14 @@ namespace WindowSoul
         public override void SetType(string stri)
         {
             _type = stri;
+        }
+
+        internal override string GetTag() => Tag; 
+        internal override string GetInfoT() => textsave;
+
+        public override void SetTag(string tag)
+        {
+            Tag = tag;
         }
         internal override void UseMethod()
         {
